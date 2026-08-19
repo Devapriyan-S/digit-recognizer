@@ -213,10 +213,49 @@ function renderPreview(input) {
     $("#loading").hidden = true;
     $("#app").hidden = false;
     sizeCanvas();
+    bootstrapDemo();
   } catch (err) {
     $("#loading").textContent = `Could not load the model: ${err.message}`;
   }
 })();
+
+/* ── Automatic demo on arrival ────────────────────────────── */
+
+/* A blank canvas and an em-dash tell a visitor nothing. Drawing a digit on
+   arrival means the first thing on screen is the model working: a prediction,
+   a confidence, and the 28x28 the network actually receives.
+ *
+ * Coordinates are fractions of the pad so this is independent of its size. */
+const DEMO_STROKES = [
+  [[0.28, 0.20], [0.66, 0.19], [0.46, 0.46], [0.70, 0.60], [0.64, 0.82], [0.28, 0.83]],
+];
+
+function bootstrapDemo() {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width) return;
+
+  ctx.strokeStyle = "#ffffff";
+  ctx.fillStyle = "#ffffff";
+  for (const stroke of DEMO_STROKES) {
+    ctx.beginPath();
+    stroke.forEach(([fx, fy], i) => {
+      const x = fx * rect.width, y = fy * rect.height;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+  hasInk = true;
+  predict();
+
+  const panel = document.querySelector(".result-panel");
+  const note = document.createElement("p");
+  note.className = "demo-banner";
+  note.style.margin = ".9rem 0 0";
+  note.innerHTML =
+    '<span class="badge badge-privacy">Live demo</span>' +
+    "<span>This digit was drawn for you on load. Hit Clear and draw your own.</span>";
+  panel.append(note);
+}
 
 let resizeTimer;
 window.addEventListener("resize", () => {
