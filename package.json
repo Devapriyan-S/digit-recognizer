@@ -1,0 +1,7 @@
+{
+  "name": "digit-recognizer",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": { "test": "node tests/model.test.mjs" }
+}

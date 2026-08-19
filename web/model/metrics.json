@@ -1,0 +1,37 @@
+{
+  "train_accuracy": 0.992,
+  "test_accuracy": 0.9758,
+  "test_size": 10000,
+  "top_confusions": [
+    {
+      "truth": 8,
+      "predicted": 3,
+      "count": 19
+    },
+    {
+      "truth": 5,
+      "predicted": 3,
+      "count": 15
+    },
+    {
+      "truth": 4,
+      "predicted": 9,
+      "count": 13
+    },
+    {
+      "truth": 9,
+      "predicted": 3,
+      "count": 9
+    },
+    {
+      "truth": 7,
+      "predicted": 2,
+      "count": 9
+    },
+    {
+      "truth": 6,
+      "predicted": 5,
+      "count": 9
+    }
+  ]
+}
