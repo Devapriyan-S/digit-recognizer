@@ -133,4 +133,4 @@ python train.py                     # ~2 min, rewrites web/model/weights.json
 
 ---
 
-MIT licensed. Built by [Devapriyan Sampath](https://github.com/Devapriyan-S).
+MIT licensed. Built by **Devapriyan Sampath** — [portfolio](https://devapriyan-s.github.io/) · [LinkedIn](https://www.linkedin.com/in/deva-priyan-sampath-2091a7288/) · [devapriyan1723@gmail.com](mailto:devapriyan1723@gmail.com)
